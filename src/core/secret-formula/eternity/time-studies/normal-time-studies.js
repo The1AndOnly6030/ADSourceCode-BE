@@ -266,6 +266,14 @@ export const normalTimeStudies = [
     effect: 285
   },
   {
+    id: 112,
+    cost: new Decimal (10),
+    requirement: [111],
+    reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
+    description: () => `Nearly remove the cap to Replication chance upgrades`,
+    effect: 999999999
+  },
+  {
     id: 121,
     cost: new Decimal(9),
     STCost: 2,
@@ -397,8 +405,28 @@ export const normalTimeStudies = [
     description: () => `${formatX(1e4)} multiplier on all Time Dimensions`,
     effect: 1e4
   },
+
+  {
+    id: 152,
+    cost: new Decimal(6),
+    requirement: [151],
+    reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
+    description: () => `Massively reduce the cost of Replication chance upgrades (${formatInt(1e15)} ➜ ${format(10)})`
+  },
+
   {
     id: 161,
+    cost: new Decimal(8),
+    requirement: [162],
+    reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
+    description: () => `Antimatter Dimensions gain a power based on Antimatter Galaxies`,
+    effect: () => Math.max(Decimal.pow(player.galaxies, 0.026378552418), 1),
+  //  formatEffect: value => formatPow(new Decimal(value), 4, 4),
+    cap: 1.15
+  },
+// Caps at 200 AGs
+  {
+    id: 162,
     cost: new Decimal(7),
     requirement: [151],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
@@ -406,17 +434,29 @@ export const normalTimeStudies = [
     effect: () => DC.E616
   },
   {
-    id: 162,
+    id: 163,
     cost: new Decimal(7),
     requirement: [151],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     description: () => `${formatX(1e11)} multiplier on all Infinity Dimensions`,
     effect: 1e11
   },
+
+  {
+    id: 164,
+    cost: new Decimal(8),
+    requirement: [163],
+    reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
+    description: () => `Infinity Dimensions gain a power based on Replicanti Galaxies`,
+    effect: () => Math.max(Decimal.pow(player.replicanti.galaxies, 0.003813362573), 1),
+//    formatEffect: value => formatPow(value, 4, 5),
+    cap: 1.02
+  },
+// Caps at 180 RGs. Extremely specific number used
   {
     id: 171,
     cost: new Decimal(15),
-    requirement: [161, 162],
+    requirement: [162, 163],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     description: () => `Time Shard requirement for the next Tickspeed upgrade goes up slower
       ${formatX(1.33, 0, 2)} ➜ ${formatX(1.25, 0, 2)}`,
@@ -563,7 +603,7 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [226],
     description: "You gain extra Replicanti Galaxies based on Replicanti amount",
-    effect: () => Decimal.floor(Replicanti.amount.clampMin(1).log10().div(1000)),
+    effect: () => Decimal.floor(Replicanti.amount.clampMin(1).log10().div(800)),
     formatEffect: value => `+${formatInt(value)} RG`
   },
   {
@@ -574,7 +614,7 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [225],
     description: "You gain extra Replicanti Galaxies based on their max",
-    effect: () => Decimal.floor(player.replicanti.boughtGalaxyCap.div(15)),
+    effect: () => Decimal.floor(player.replicanti.boughtGalaxyCap.div(12)),
     formatEffect: value => `+${formatInt(value)} RG`
   },
   {
@@ -643,6 +683,19 @@ export const normalTimeStudies = [
     description: "Dimensional Sacrifice applies to 1st Antimatter Dimension",
     effect: () => Sacrifice.totalBoost,
   },
+
+  {
+    id: 241,
+    cost: new Decimal(25000),
+    requirement: [() => player.dilation.studies.length > 0],
+    reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
+    description: "Time Dimensions gain a power based on Tachyon Galaxies",
+    effect: () => Math.max(Decimal.pow(player.dilation.totalTachyonGalaxies, 0.0172617684), 1),
+//    formatEffect: value => formatPow(value, 1, 4),
+    cap: 1.1
+  },
+  // Extremely specific power, right? Well, it's roughly what you need to get 1.1 at 250 TGs (the old mod's max)
+
   // Note: These last 4 entries are the triad studies
   {
     id: 301,

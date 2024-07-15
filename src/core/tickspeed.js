@@ -126,8 +126,10 @@ export function buyMaxTickSpeed() {
 
 export function resetTickspeed() {
   player.totalTickBought = DC.D0;
-  player.chall9TickspeedCostBumps = DC.D0;
+//  player.chall9TickspeedCostBumps = DC.D0;
 }
+
+// Hotfix used to remove that code above, fixing an issue with dimboost/galaxy purchases
 
 export const Tickspeed = {
 

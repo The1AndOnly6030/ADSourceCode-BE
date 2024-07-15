@@ -7,6 +7,8 @@ export const normalAchievements = [
     name: "You gotta start somewhere",
     description: "Buy a 1st Antimatter Dimension.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
+    get reward () { return `Antimatter Dimensions are ${formatX(100)} stronger.`},
+    effect: 100
   },
   {
     id: 12,
@@ -697,7 +699,9 @@ export const normalAchievements = [
     name: "8 nobody got time for that",
     description: "Eternity without buying Antimatter Dimensions 1-7.",
     checkRequirement: () => player.requirementChecks.eternity.onlyAD8,
-    checkEvent: GAME_EVENT.ETERNITY_RESET_BEFORE
+    checkEvent: GAME_EVENT.ETERNITY_RESET_BEFORE,
+    get reward() {return `8th Antimatter Dimensions are raised to ${formatPow(1.001, 1, 3)}.`},
+    effect: 1.001
   },
   {
     id: 102,
@@ -855,7 +859,9 @@ export const normalAchievements = [
     name: "You're already dead.",
     description: "Eternity without buying Antimatter Dimensions 2-8.",
     checkRequirement: () => player.requirementChecks.eternity.onlyAD1,
-    checkEvent: GAME_EVENT.ETERNITY_RESET_BEFORE
+    checkEvent: GAME_EVENT.ETERNITY_RESET_BEFORE,
+    get reward () {return `1st Antimatter Dimensions are raised to ${formatPow(1.008, 1, 3)}.`},
+    effect: 1.008
   },
   {
     id: 123,

@@ -115,7 +115,7 @@ export function gainedInfinityPoints() {
 
   return ip.floor();
 }
-
+// this should be the place to add achievement effects
 function totalEPMult() {
   return Pelle.isDisabled("EPMults")
     ? Pelle.specialGlyphEffect.time.timesEffectOf(PelleRifts.vacuum.milestones[2])

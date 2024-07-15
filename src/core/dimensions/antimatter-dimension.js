@@ -19,6 +19,7 @@ export function antimatterDimensionCommonMultiplier() {
     BreakInfinityUpgrade.slowestChallengeMult,
     InfinityUpgrade.totalTimeMult,
     InfinityUpgrade.thisInfinityTimeMult,
+    Achievement(11),
     Achievement(48),
     Achievement(56),
     Achievement(65),
@@ -32,6 +33,7 @@ export function antimatterDimensionCommonMultiplier() {
     TimeStudy(91),
     TimeStudy(101),
     TimeStudy(161),
+    TimeStudy(162),
     TimeStudy(193),
     InfinityChallenge(3),
     InfinityChallenge(3).reward,
@@ -143,6 +145,20 @@ function applyNDPowers(mult, tier) {
   let multiplier = mult;
   const glyphPowMultiplier = new Decimal(getAdjustedGlyphEffect("powerpow"));
   const glyphEffarigPowMultiplier = getAdjustedGlyphEffect("effarigdimensions");
+
+  if (tier === 1) {
+    multiplier = multiplier
+    .powEffectOf(
+      Achievement(122)
+    );
+  }
+
+  if (tier === 8) {
+    multiplier = multiplier
+    .powEffectOf(
+      Achievement(101)
+    );
+  }
 
   if (InfinityChallenge(4).isRunning && player.postC4Tier !== tier) {
     multiplier = multiplier.pow(InfinityChallenge(4).effectValue);

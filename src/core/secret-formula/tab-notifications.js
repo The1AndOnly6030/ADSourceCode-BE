@@ -1,7 +1,8 @@
 import { DC } from "../constants";
 
 export const tabNotifications = {
-  firstInfinity: {
+// Commented this part out so the game doesn't constantly tell you "Hey, check the nonexistent multiplier breakdown tab!"
+/*  firstInfinity: {
     id: 0,
     tabsToHighLight: [
       {
@@ -22,6 +23,7 @@ export const tabNotifications = {
       !PlayerProgress.infinityUnlocked(),
     events: [GAME_EVENT.BIG_CRUNCH_BEFORE]
   },
+*/
   breakInfinity: {
     id: 1,
     tabsToHighLight: [
