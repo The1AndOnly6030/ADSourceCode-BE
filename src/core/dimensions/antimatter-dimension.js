@@ -33,7 +33,6 @@ export function antimatterDimensionCommonMultiplier() {
     TimeStudy(91),
     TimeStudy(101),
     TimeStudy(161),
-    TimeStudy(162),
     TimeStudy(193),
     InfinityChallenge(3),
     InfinityChallenge(3).reward,

@@ -167,7 +167,7 @@ export const tabNotifications = {
     condition: () => player.celestials.ra.pets.effarig.level >= 2,
     events: [GAME_EVENT.GAME_TICK_AFTER]
   },
-  newAutobuyer: {
+/*  newAutobuyer: {
     id: 12,
     tabsToHighLight: [
       {
@@ -178,6 +178,7 @@ export const tabNotifications = {
     // Always externally triggered, but needs to be ignored in cel7 because they're unlocked differently
     condition: () => !Pelle.isDoomed,
   },
+*/
   imaginaryMachineUnlock: {
     id: 13,
     tabsToHighLight: [

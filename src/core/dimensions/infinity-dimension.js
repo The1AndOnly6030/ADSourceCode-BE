@@ -8,8 +8,7 @@ export function infinityDimensionCommonMultiplier() {
       Achievement(75),
       TimeStudy(82),
       TimeStudy(92),
-      TimeStudy(163),
-      TimeStudy(164),
+      TimeStudy(162),
       InfinityChallenge(1).reward,
       InfinityChallenge(6).reward,
       EternityChallenge(4).reward,
@@ -155,7 +154,6 @@ class InfinityDimensionState extends DimensionState {
     if (tier === 1) {
       mult = mult.times(PelleRifts.decay.milestones[0].effectOrDefault(1));
     }
-
 
     mult = mult.pow(getAdjustedGlyphEffect("infinitypow"));
     mult = mult.pow(getAdjustedGlyphEffect("effarigdimensions"));
@@ -412,6 +410,6 @@ export const InfinityDimensions = {
 
   get powerConversionRate() {
     return getAdjustedGlyphEffect("infinityrate").add(7)
-      .add(PelleUpgrade.infConversion.effectOrDefault(0)).mul(PelleRifts.paradox.milestones[2].effectOrDefault(1));
+      .add(PelleUpgrade.infConversion.effectOrDefault(0)).add(Achievement(82).effectOrDefault(0)).mul(PelleRifts.paradox.milestones[2].effectOrDefault(1));
   }
 };

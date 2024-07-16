@@ -107,7 +107,7 @@ class NormalChallengeState extends GameMechanicState {
     // Completing a challenge unlocks an autobuyer even if not purchased with antimatter, but we still
     // need to clear the notification because otherwise it sticks there forever. Any other methods of
     // unlocking autobuyers (such as Existentially Prolong) should also go through this code path
-    TabNotification.newAutobuyer.clearTrigger();
+//    TabNotification.newAutobuyer.clearTrigger();
     GameCache.cheapestAntimatterAutobuyer.invalidate();
   }
 

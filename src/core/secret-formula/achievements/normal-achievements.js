@@ -546,6 +546,8 @@ export const normalAchievements = [
     get description() { return `Complete all ${formatInt(8)} Infinity Challenges.`; },
     checkRequirement: () => InfinityChallenges.completed.length === 8,
     checkEvent: [GAME_EVENT.INFINITY_CHALLENGE_COMPLETED, GAME_EVENT.REALITY_RESET_AFTER],
+    get reward() { return `Infinity Power conversion is improved by +${format(0.1, 0, 1)}.`},
+    effect: 0.1
   },
   {
     id: 83,
